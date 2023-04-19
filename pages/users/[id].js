@@ -2,12 +2,22 @@ import { gql } from "@apollo/client";
 import client from "../../helpers/apolloclient";
 import Link from "next/link";
 
-export default function Users({ data }) {
+export default function SpecificUser({ data }) {
   console.log('all posts',data);
   return (
     <div>
-      <h1> List of all posts users</h1>
 
+
+    
+      <h1> all posts of {data.user.name}</h1>
+        {
+          data.user.posts.map((item,key)=>{
+            return  <>
+            <h2>  {key + 1}  title: {item.title} </h2>
+
+            </> 
+           })
+        }  
     </div>
   );
 }
@@ -41,6 +51,7 @@ export async function getStaticProps({ params }) {
     query User($id: ID!)  {
         user(where: { id: $id }) {
           id
+          name
           posts{
             title
             id

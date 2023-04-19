@@ -1,16 +1,20 @@
-import Link from "next/link";
 
-export default function About() {
+import Link from "next/link";
+import { gql } from "@apollo/client";
+import {  useMutation ,useQuery } from '@apollo/client';
+
+
+export default function Home() {
+
 
     return (
 
-        <div>
-        <p>Home page</p>
-        <p>
-          <Link href="/users">See the list of companies</Link>
-        </p>
- {}
-      </div>
+        <div className="flex min-h-screen flex-col items-center  p-2"  >
+             {/* <Link href="/Login"> login </Link> */}
+             <Link href="/users"> users </Link>
+         </div>
 
     )
   }
+
+
